@@ -1,0 +1,38 @@
+contacts = {"ahmed":1452,
+            "rawda":4569,
+            "harry":7896,
+            "3adelshakal":14789
+            }
+def add(contacts: dict, name: str, phone: str) -> None:
+    if name in contacts:
+        print(f"{name}already exists")
+    contacts[name] = phone
+
+def remove(contacts: dict, name: str) -> bool:
+    if name in contacts:
+        del contacts[name]
+        return True
+    else:
+        return False
+
+def search(contacts: dict, name: str) -> list[str]:
+    search_name = name.lower()
+    results = []
+    for contact_name, phone in contacts.items():
+        if search_name in contact_name.lower():
+            results.append(f"{contact_name}: {phone}")
+    return results
+
+def view(contacts: dict) -> list[str]:
+     return [f"{name}: {phone}" for name, phone in contacts.items()]
+
+#test
+     #add a contact
+add(contacts,"mondy", 555-1234)
+add(contacts,"hamedo", 555-5678)
+     # View all contacts
+print(view(contacts))
+     # Search for a contact
+print(search(contacts,"ahmed"))
+     # Remove a contact
+print(remove(contacts,"zen"))
